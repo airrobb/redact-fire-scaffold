@@ -1,6 +1,9 @@
 import { Map, List } from 'immutable'
+import firebase from 'firebase'
+
 
 const INITIAL_STATE = Map({
+  ref: 
   thing: undefined
 })
 
