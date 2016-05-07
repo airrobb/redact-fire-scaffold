@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
 import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, NavItem } from 'react-bootstrap'
+
 export class Navigation extends Component {
   render () {
     return (
@@ -12,6 +12,7 @@ export class Navigation extends Component {
               <a>Your App</a>
             </IndexLinkContainer>
           </Navbar.Brand>
+          <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>

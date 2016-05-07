@@ -33,7 +33,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    historyApiFallback: true
   },
   sassLoader: {
      includePaths: [path.resolve(__dirname, "./styles")]
