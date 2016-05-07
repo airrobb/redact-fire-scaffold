@@ -15,6 +15,8 @@ import thunk from 'redux-thunk'
 import reducer from './reducer'
 
 import { App } from './components/App'
+import { Login } from './components/Login'
+import { Signup } from './components/Signup'
 
 const DevTools = createDevTools(
   <DockMonitor toggleVisibilityKey='ctrl-h' changePositionKey='ctrl-q'>
@@ -40,7 +42,11 @@ const app = document.getElementById('app')
 render(<Provider store={store}>
   <div>
     <Router history={history}>
-      <Route path='/' component={App} />
+      <Route path='/' component={App}>
+        <Route path='/signup' component={Signup} />
+        <Route path='/login' component={Login} />
+        //TODO Add Your Routes Here
+      </Route>
     </Router>
     <DevTools />
   </div>

@@ -5,7 +5,7 @@ import Firebase from 'firebase'
 
 const INITIAL_STATE = Map({
   ref: new Firebase('https://redact-fire.firebaseio.com/'),
-  thing: undefined
+  user: undefined
 })
 
 export default function (state = INITIAL_STATE, action) {

@@ -1,9 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
+import { Navigation } from './Navigation'
 
 export class App extends Component {
   render () {
     return (
-      <h1>Hi</h1>
+      <div>
+        <Navigation />
+        {this.props.children}
+      </div>
+
     )
   }
+}
+
+App.propTypes = {
+  children: PropTypes.node.isRequired
 }
