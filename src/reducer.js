@@ -10,7 +10,13 @@ const INITIAL_STATE = Map({
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
-    case 'DOES_SOMETHING':
+    case 'LOGIN_SUCCESS':
+      return state
+    case 'LOGIN_FAILURE':
+      return state
+    case 'SIGN_UP_FAILURE':
+      return state
+    case 'SIGN_UP_SUCCESS':
       return state
   }
   return state

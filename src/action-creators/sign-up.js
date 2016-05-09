@@ -1,0 +1,23 @@
+export function signUp(email, password) {
+  return function(dispatch, getState) {
+    const ref = getState().get('ref')
+    ref.createUser({
+      email: email,
+      password: password
+    }, (err, userData) => {
+      err ? dispatch(signUpFailure()) : dispatch(signUpSuccess())
+    })
+  }
+}
+
+function signUpFailure() {
+  return {
+    type: 'SIGN_UP_FAILURE'
+  }
+}
+
+function signUpSuccess() {
+  return {
+    type: 'SIGN_UP_SUCCESS'
+  }
+}
