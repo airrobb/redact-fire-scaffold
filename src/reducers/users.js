@@ -7,7 +7,7 @@ export function loginFailure(state, userData) {
 }
 
 export function signUpSuccess(state) {
-
+  return state
 }
 
 export function signUpFailure(state) {

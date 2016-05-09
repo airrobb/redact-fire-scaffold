@@ -1,6 +1,6 @@
-function userLogin(email, password) {
+export function userLogin(email, password) {
   return function (dispatch, getState) {
-    getState().get('ref').authWithPassword({
+    getState().app.get('ref').authWithPassword({
       email: email,
       password: password
     }, (err, userData) => {
@@ -12,7 +12,7 @@ function userLogin(email, password) {
 function loginSuccess(userData) {
   return {
     type: 'USER_LOGIN',
-    user: userData,
+    user: userData
   }
 }
 
