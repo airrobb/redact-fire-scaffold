@@ -1,10 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 import AutomaticForm from 'react-automatic-form'
+import { connect } from 'react-redux'
+import * as actionCreators from '../action-creators/signup'
+
 
 export class Signup extends Component {
   handleSubmit (formData) {
-    console.log(formData)
+    this.props.signUp(formData.email, formData.password)
   }
   render () {
     const inputFields = [
@@ -15,11 +18,7 @@ export class Signup extends Component {
       {
         name: 'password',
         type: 'password'
-      },
-      {
-        name: 'confirm password',
-        type: 'password'
-    }]
+      }]
     return (
       <Grid>
         <Row>
@@ -32,3 +31,11 @@ export class Signup extends Component {
     )
   }
 }
+
+function mapStateToProps (state) {
+  return {
+    user: state.app.get('user')
+  }
+}
+
+export const SignupContainer = connect(mapStateToProps, actionCreators)(Signup)

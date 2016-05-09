@@ -1,6 +1,6 @@
 export function signUp(email, password) {
   return function(dispatch, getState) {
-    const ref = getState().get('ref')
+    const ref = getState().app.get('ref')
     ref.createUser({
       email: email,
       password: password
