@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 
 export class Login extends Component {
@@ -6,7 +6,7 @@ export class Login extends Component {
     return (
       <Grid>
         <Row>
-          <Col xs={6}>
+          <Col xs={12}>
             <h1>Login</h1>
           </Col>
         </Row>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, NavItem } from 'react-bootstrap'
 
