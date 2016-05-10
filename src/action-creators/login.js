@@ -1,4 +1,4 @@
-export function userLogin(email, password) {
+export function userLogin (email, password) {
   return function (dispatch, getState) {
     getState().app.get('ref').authWithPassword({
       email: email,
@@ -9,14 +9,14 @@ export function userLogin(email, password) {
   }
 }
 
-function loginSuccess(userData) {
+function loginSuccess (userData) {
   return {
     type: 'LOGIN_SUCCESS',
     user: userData
   }
 }
 
-function loginFailure() {
+function loginFailure () {
   return {
     type: 'LOGIN_FAILURE'
   }

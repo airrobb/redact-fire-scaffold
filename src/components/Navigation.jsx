@@ -22,18 +22,18 @@ export class Navigation extends Component {
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-            { this.props.user ?
-            <LoggedIn
-              user={this.props.user}
-              logout={this.handleLogout.bind(this)} /> :
-            <LoggedOut /> }
+            {this.props.user
+              ? <LoggedIn
+                user={this.props.user}
+                logout={this.handleLogout.bind(this)} />
+              : <LoggedOut />}
         </Navbar.Collapse>
       </Navbar>
     )
   }
 }
 const LoggedOut = (props) =>
- <Nav pullRight>
+  <Nav pullRight>
     <LinkContainer to={{ pathname: '/signup' }}>
       <NavItem eventKey={1} href='#'>Signup</NavItem>
     </LinkContainer>
@@ -43,21 +43,30 @@ const LoggedOut = (props) =>
   </Nav>
 
 const LoggedIn = (props) =>
- <Nav pullRight>
-   <NavDropdown eventKey={3} title={props.user} id="basic-nav-dropdown">
-     <LinkContainer to={{ pathname: '/account' }}>
-      <MenuItem eventKey={3.1}>Account</MenuItem>
-     </LinkContainer>
-     <MenuItem divider />
-     <MenuItem onClick={props.logout} eventKey={3.3}>Logout</MenuItem>
-  </NavDropdown>
- </Nav>
+  <Nav pullRight>
+    <NavDropdown eventKey={3} title={props.user} id='user-navigation'>
+      <LinkContainer to={{ pathname: '/account' }}>
+        <MenuItem eventKey={3.1}>Account</MenuItem>
+      </LinkContainer>
+      <MenuItem divider />
+      <MenuItem onClick={props.logout} eventKey={3.3}>Logout</MenuItem>
+    </NavDropdown>
+  </Nav>
 
 function mapStateToProps (state) {
-  console.log(state)
   return {
     user: state.app.get('user')
   }
+}
+
+Navigation.propTypes = {
+  user: PropTypes.array.isRequired,
+  userLogout: PropTypes.func.isRequired
+}
+
+LoggedIn.propTypes = {
+  user: PropTypes.array.isRequired,
+  logout: PropTypes.func.isRequired
 }
 
 export const NavigationContainer = connect(mapStateToProps, actionCreators)(Navigation)

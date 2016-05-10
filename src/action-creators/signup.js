@@ -1,5 +1,5 @@
-export function signUp(email, password) {
-  return function(dispatch, getState) {
+export function signUp (email, password) {
+  return function (dispatch, getState) {
     const ref = getState().app.get('ref')
     ref.createUser({
       email: email,
@@ -10,13 +10,13 @@ export function signUp(email, password) {
   }
 }
 
-function signUpFailure() {
+function signUpFailure () {
   return {
     type: 'SIGN_UP_FAILURE'
   }
 }
 
-function signUpSuccess() {
+function signUpSuccess () {
   return {
     type: 'SIGN_UP_SUCCESS'
   }

@@ -36,8 +36,13 @@ export class Login extends Component {
 
 function mapStateToProps (state) {
   return {
-    app: state.app
+    user: state.app.get('user')
   }
+}
+
+Login.propTypes = {
+  user: PropTypes.array.isRequired,
+  userLogin: PropTypes.func.isRequired
 }
 
 export const LoginContainer = connect(mapStateToProps, actionCreators)(Login)

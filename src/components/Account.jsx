@@ -14,3 +14,6 @@ export class Account extends Component {
     )
   }
 }
+
+Account.propTypes = {
+}

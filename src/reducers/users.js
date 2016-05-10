@@ -1,19 +1,19 @@
-export function loginSuccess(state, userData) {
-  return state.update('user', (u) => userData.uid)
+export function loginSuccess (state, userData) {
+  return state.update('user', (u) => u.set())
 }
 
-export function loginFailure(state, userData) {
+export function loginFailure (state, userData) {
   return state
 }
 
-export function signUpSuccess(state) {
+export function signUpSuccess (state) {
   return state
 }
 
-export function signUpFailure(state) {
+export function signUpFailure (state) {
   return state
 }
 
-export function logoutSuccess(state) {
+export function logoutSuccess (state) {
   return state
 }

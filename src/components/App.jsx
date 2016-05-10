@@ -8,7 +8,10 @@ export class App extends Component {
         <NavigationContainer />
         {this.props.children}
       </div>
-
     )
   }
+}
+
+App.propTypes = {
+  children: PropTypes.node.isRequired
 }

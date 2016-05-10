@@ -11,7 +11,6 @@ import { Router, Route, browserHistory } from 'react-router'
 import { routerReducer, syncHistoryWithStore } from 'react-router-redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
-import { Map } from 'immutable'
 
 import reducer from './reducer'
 
@@ -19,7 +18,6 @@ import { App } from './components/App'
 import { LoginContainer } from './components/Login'
 import { SignupContainer } from './components/Signup'
 import { Account } from './components/Account'
-
 
 const DevTools = createDevTools(
   <DockMonitor toggleVisibilityKey='ctrl-h' changePositionKey='ctrl-q'>
@@ -31,8 +29,6 @@ const reducers = combineReducers({
   app: reducer,
   routing: routerReducer
 })
-
-
 
 const store = createStore(
   reducers,

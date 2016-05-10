@@ -13,13 +13,13 @@ export default function (state = initialState, action) {
     case 'LOGIN_SUCCESS':
       return loginSuccess(state, action.user)
     case 'LOGIN_FAILURE':
-      return state
+      return loginFailure(state)
     case 'SIGN_UP_FAILURE':
-      return state
+      return signUpFailure(state)
     case 'SIGN_UP_SUCCESS':
-      return state
+      return signUpSuccess(state)
     case 'LOGOUT_SUCCESS':
-      return state
+      return logoutSuccess(state)
   }
   return state
 }
