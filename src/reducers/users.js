@@ -1,5 +1,5 @@
 export function loginSuccess(state, userData) {
-  return state
+  return state.update('user', (u) => userData.uid)
 }
 
 export function loginFailure(state, userData) {
@@ -11,5 +11,9 @@ export function signUpSuccess(state) {
 }
 
 export function signUpFailure(state) {
+  return state
+}
+
+export function logoutSuccess(state) {
   return state
 }

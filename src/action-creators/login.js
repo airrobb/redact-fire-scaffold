@@ -11,7 +11,7 @@ export function userLogin(email, password) {
 
 function loginSuccess(userData) {
   return {
-    type: 'USER_LOGIN',
+    type: 'LOGIN_SUCCESS',
     user: userData
   }
 }

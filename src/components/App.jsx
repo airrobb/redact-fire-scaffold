@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
-import { Navigation } from './Navigation'
+import { NavigationContainer } from './Navigation'
 
 export class App extends Component {
   render () {
     return (
       <div>
-        <Navigation />
+        <NavigationContainer />
         {this.props.children}
       </div>
 

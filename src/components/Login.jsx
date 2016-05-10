@@ -36,7 +36,7 @@ export class Login extends Component {
 
 function mapStateToProps (state) {
   return {
-    user: state.app.get('user')
+    app: state.app
   }
 }
 
