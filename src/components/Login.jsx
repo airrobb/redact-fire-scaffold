@@ -41,7 +41,7 @@ function mapStateToProps (state) {
 }
 
 Login.propTypes = {
-  user: PropTypes.array.isRequired,
+  user: PropTypes.object,
   userLogin: PropTypes.func.isRequired
 }
 

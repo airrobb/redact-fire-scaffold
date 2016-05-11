@@ -1,5 +1,7 @@
 export function loginSuccess (state, userData) {
-  return state.update('user', (u) => u.set())
+  const setUser = state.setIn(['user', 'uid'], userData.uid)
+                      .setIn(['user', 'email'], userData.password.email)
+  return setUser
 }
 
 export function loginFailure (state, userData) {
@@ -15,5 +17,7 @@ export function signUpFailure (state) {
 }
 
 export function logoutSuccess (state) {
-  return state
+  const clearUser = state.setIn(['user', 'uid'], undefined)
+                      .setIn(['user', 'email'], undefined)
+  return clearUser
 }

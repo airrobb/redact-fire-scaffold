@@ -40,7 +40,7 @@ function mapStateToProps (state) {
 }
 
 Signup.propTypes = {
-  user: PropTypes.array.isRequired,
+  user: PropTypes.object,
   signUp: PropTypes.func.isRequired
 }
 

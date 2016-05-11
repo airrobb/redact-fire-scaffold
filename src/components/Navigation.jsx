@@ -10,7 +10,6 @@ export class Navigation extends Component {
     this.props.userLogout()
   }
   render () {
-    console.log(this.props.user)
     return (
       <Navbar>
         <Navbar.Header>
@@ -22,9 +21,9 @@ export class Navigation extends Component {
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-            {this.props.user
+            {this.props.user.get('email')
               ? <LoggedIn
-                user={this.props.user}
+                user={this.props.user.get('email')}
                 logout={this.handleLogout.bind(this)} />
               : <LoggedOut />}
         </Navbar.Collapse>
@@ -32,6 +31,12 @@ export class Navigation extends Component {
     )
   }
 }
+
+Navigation.propTypes = {
+  user: PropTypes.object,
+  userLogout: PropTypes.func.isRequired
+}
+
 const LoggedOut = (props) =>
   <Nav pullRight>
     <LinkContainer to={{ pathname: '/signup' }}>
@@ -53,20 +58,15 @@ const LoggedIn = (props) =>
     </NavDropdown>
   </Nav>
 
+LoggedIn.propTypes = {
+  user: PropTypes.string,
+  logout: PropTypes.func.isRequired
+}
+
 function mapStateToProps (state) {
   return {
     user: state.app.get('user')
   }
-}
-
-Navigation.propTypes = {
-  user: PropTypes.array.isRequired,
-  userLogout: PropTypes.func.isRequired
-}
-
-LoggedIn.propTypes = {
-  user: PropTypes.array.isRequired,
-  logout: PropTypes.func.isRequired
 }
 
 export const NavigationContainer = connect(mapStateToProps, actionCreators)(Navigation)

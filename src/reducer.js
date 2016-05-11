@@ -5,7 +5,10 @@ import { loginSuccess, loginFailure, signUpSuccess, signUpFailure, logoutSuccess
 
 const initialState = Map({
   ref: new Firebase('https://redact-fire.firebaseio.com/'),
-  user: undefined
+  user: Map({
+    uid: undefined,
+    email: undefined
+  })
 })
 
 export default function (state = initialState, action) {
