@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import * as actionCreators from '../action-creators/signup'
 
 export class Signup extends Component {
-  handleSubmit (formData) {
-    this.props.signUp(formData.email, formData.password)
+  handleSubmit (email, password) {
+    this.props.signUp(email, password)
   }
   render () {
     return (
@@ -17,7 +17,8 @@ export class Signup extends Component {
             <SignupForm
               signUp={this.handleSubmit.bind(this)}
               validateSignup={this.props.validateSignup.bind(this)}
-              formState={this.props.formState} />
+              formState={this.props.formState}
+              setError={this.props.signUpError} />
           </Col>
         </Row>
       </Grid>

@@ -1,6 +1,6 @@
 import { Map } from 'immutable'
 import Firebase from 'firebase'
-import { loginSuccess, loginFailure, signUpSuccess, signUpFailure, logoutSuccess, validateSignup } from './reducers/users'
+import { loginSuccess, loginFailure, signUpSuccess, signUpFailure, signUpError, logoutSuccess, validateSignup } from './reducers/users'
 // Your Firebase Ref Goes here
 
 const initialState = Map({
@@ -22,7 +22,15 @@ const initialState = Map({
       value: undefined,
       validation: undefined
     }),
-    valid: false
+    valid: false,
+    message: Map({
+      type: '',
+      active: false,
+      content: Map({
+        headline: undefined,
+        message: undefined
+      })
+    })
   })
 })
 
@@ -35,9 +43,11 @@ export default function (state = initialState, action) {
       return loginFailure(state)
     case 'VALIDATE_SIGNUP':
       return validateSignup(state, action.field, action.value)
-    case 'SIGN_UP_FAILURE':
+    case 'SIGNUP_ERROR':
+      return signUpError(state)
+    case 'SIGNUP_FAILURE':
       return signUpFailure(state)
-    case 'SIGN_UP_SUCCESS':
+    case 'SIGNUP_SUCCESS':
       return signUpSuccess(state)
     case 'LOGOUT_SUCCESS':
       return logoutSuccess(state)

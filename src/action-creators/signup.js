@@ -12,13 +12,13 @@ export function signUp (email, password) {
 
 function signUpFailure () {
   return {
-    type: 'SIGN_UP_FAILURE'
+    type: 'SIGNUP_FAILURE'
   }
 }
 
 function signUpSuccess () {
   return {
-    type: 'SIGN_UP_SUCCESS'
+    type: 'SIGNUP_SUCCESS'
   }
 }
 
@@ -27,5 +27,11 @@ export function validateSignup (field, value) {
     type: 'VALIDATE_SIGNUP',
     field: field,
     value: value
+  }
+}
+
+export function signUpError () {
+  return {
+    type: 'SIGNUP_ERROR'
   }
 }
