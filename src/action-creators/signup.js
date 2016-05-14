@@ -21,3 +21,11 @@ function signUpSuccess () {
     type: 'SIGN_UP_SUCCESS'
   }
 }
+
+export function validateSignup (field, value) {
+  return {
+    type: 'VALIDATE_SIGNUP',
+    field: field,
+    value: value
+  }
+}
