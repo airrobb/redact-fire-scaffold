@@ -1,7 +1,29 @@
+import { Map } from 'immutable'
+
 export function loginSuccess (state, userData) {
   const setUser = state.setIn(['user', 'uid'], userData.uid)
                        .setIn(['user', 'email'], userData.password.email)
-  return setUser
+   const clearForm = setUser.set('loginForm',
+    Map({
+       email: Map({
+         value: undefined,
+         validation: undefined
+       }),
+       password: Map({
+         value: undefined,
+         validation: undefined
+       }),
+       valid: false,
+       message: Map({
+         type: undefined,
+         active: false,
+         content: Map({
+           headline: undefined,
+           message: undefined
+         })
+       })
+     }))
+   return clearForm
 }
 
 export function loginFailure (state, userData) {
@@ -36,7 +58,7 @@ export function loginError (state) {
       active: true,
       content: Map({
         headline: 'Invalid inputs',
-        message: 'Please fix the above fields and try again'
+        message: 'Please fix the red fields above and try again'
       })
     })
   )
@@ -66,7 +88,7 @@ function validateEmail (state) {
 
 function validatePassword (state) {
   const passwordValue = state.getIn(['loginForm', 'password', 'value'])
-  const isValid = passwordValue.length > 0 ? passwordValue.length > 8 && passwordValue.length < 16 : undefined
+  const isValid = passwordValue.length > 0 ? passwordValue.length > 6 && passwordValue.length < 16 : undefined
   const validationState = state.setIn(['loginForm', 'password', 'validation'],
                         isValid)
   return validationState.setIn(['loginForm', 'valid'], allFieldsValid(validationState))

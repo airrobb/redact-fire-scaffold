@@ -6,10 +6,11 @@ import { LoginForm } from './LoginForm'
 
 export class Login extends Component {
   handleSubmit (email, password) {
+    console.log(email, password)
     this.props.userLogin(email, password)
   }
   render () {
-    const { formState, validateLogin } = this.props
+    const { formState, validateLogin, loginError } = this.props
     return (
       <Grid>
         <Row>
@@ -18,7 +19,8 @@ export class Login extends Component {
             <LoginForm
               login={this.handleSubmit.bind(this)}
               formState={formState}
-              validateLogin={validateLogin.bind(this)}/>
+              validateLogin={validateLogin.bind(this)}
+              setError={loginError.bind(this)}/>
           </Col>
         </Row>
       </Grid>

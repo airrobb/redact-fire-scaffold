@@ -7,6 +7,10 @@ export class LoginForm extends Component {
   }
   handleSubmit (e) {
     e.preventDefault()
+    const { formState, login, setError } = this.props
+    formState.get('valid')
+    ? login(formState.getIn(['email', 'value']), formState.getIn(['password', 'value']))
+    : setError()
   }
   setValidation (state) {
     if (state === undefined) {
@@ -35,6 +39,15 @@ export class LoginForm extends Component {
             onChange={this.handleChange.bind(this)} />
           <FormControl.Feedback />
         </FormGroup>
+        <FormGroup>
+          <Button bsStyle="success" type="submit">
+            Sign Up
+          </Button>
+        </FormGroup>
+        <Alert bsStyle={formState.getIn(['message', 'type'])} style={{display: formState.getIn(['message', 'active']) ? 'block' : 'none'}}>
+         <h4>{formState.getIn(['message', 'content', 'headline'])}</h4>
+         <p>{formState.getIn(['message', 'content', 'message'])}</p>
+       </Alert>
       </Form>
     )
   }

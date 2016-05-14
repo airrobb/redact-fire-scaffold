@@ -78,7 +78,7 @@ function validateEmail (state) {
 
 function validateFirstPassword (state) {
   const passwordValue = state.getIn(['signUpForm', 'password1', 'value'])
-  const isValid = passwordValue.length > 0 ? passwordValue.length > 8 && passwordValue.length < 16 : undefined
+  const isValid = passwordValue.length > 0 ? passwordValue.length > 6 && passwordValue.length < 16 : undefined
   const validationState = state.setIn(['signUpForm', 'password1', 'validation'],
                         isValid)
   return validationState.setIn(['signUpForm', 'valid'], allFieldsValid(validationState))

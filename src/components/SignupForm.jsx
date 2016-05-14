@@ -37,7 +37,7 @@ export class SignupForm extends Component {
           <ControlLabel>Password</ControlLabel>
           <FormControl value={formState.getIn(['password1', 'value'])}
             type="password"
-            placeholder="Must be 8 - 16 characters long"
+            placeholder="Must be 6 - 16 characters long"
             onChange={this.handleChange.bind(this)} />
           <FormControl.Feedback />
         </FormGroup>

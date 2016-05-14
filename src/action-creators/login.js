@@ -9,6 +9,12 @@ export function userLogin (email, password) {
   }
 }
 
+export function loginError () {
+  return {
+    type: 'LOGIN_ERROR'
+  }
+}
+
 export function validateLogin (field, value) {
   return {
     type: 'VALIDATE_LOGIN',
@@ -16,6 +22,7 @@ export function validateLogin (field, value) {
     value: value
   }
 }
+
 function loginSuccess (userData) {
   return {
     type: 'LOGIN_SUCCESS',

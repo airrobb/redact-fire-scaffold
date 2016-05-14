@@ -1,6 +1,6 @@
 import { Map } from 'immutable'
 import Firebase from 'firebase'
-import { loginSuccess, loginFailure, logoutSuccess, validateLogin } from './reducers/users'
+import { loginSuccess, loginFailure, loginError, logoutSuccess, validateLogin } from './reducers/users'
 import { signUpSuccess, signUpFailure, signUpError, validateSignup } from './reducers/signup'
 // Your Firebase Ref Goes here
 
@@ -62,6 +62,8 @@ export default function (state = initialState, action) {
       return loginSuccess(state, action.user)
     case 'LOGIN_FAILURE':
       return loginFailure(state)
+    case 'LOGIN_ERROR':
+      return loginError(state)
     case 'VALIDATE_SIGNUP':
       return validateSignup(state, action.field, action.value)
     case 'SIGNUP_ERROR':
