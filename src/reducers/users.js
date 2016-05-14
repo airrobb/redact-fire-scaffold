@@ -3,6 +3,7 @@ import { Map } from 'immutable'
 export function loginSuccess (state, userData) {
   const setUser = state.setIn(['user', 'uid'], userData.uid)
                      .setIn(['user', 'email'], userData.password.email)
+                     .setIn(['user', 'avatar'], userData.password.profileImageURL)
   const clearForm = setUser.set('loginForm',
     Map({
       email: Map({
@@ -30,6 +31,7 @@ export function loginSuccess (state, userData) {
 export function logoutSuccess (state) {
   const clearUser = state.setIn(['user', 'uid'], undefined)
                          .setIn(['user', 'email'], undefined)
+                         .setIn(['user', 'avatar'], undefined)
   return clearUser
 }
 

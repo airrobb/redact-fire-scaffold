@@ -23,7 +23,7 @@ export class Navigation extends Component {
         <Navbar.Collapse>
             {this.props.user.get('email')
               ? <LoggedIn
-                user={this.props.user.get('email')}
+                user={this.props.user}
                 logout={this.handleLogout.bind(this)} />
               : <LoggedOut />}
         </Navbar.Collapse>
@@ -49,7 +49,10 @@ const LoggedOut = (props) =>
 
 const LoggedIn = (props) =>
   <Nav pullRight>
-    <NavDropdown eventKey={3} title={props.user} id='user-navigation'>
+    <div className="profile-image">
+      <img src={props.user.get('avatar')} alt={props.user.get('email')} />
+    </div>
+    <NavDropdown eventKey={3} title={props.user.get('email')} id='user-navigation'>
       <LinkContainer to={{ pathname: '/account' }}>
         <MenuItem eventKey={3.1}>Account</MenuItem>
       </LinkContainer>

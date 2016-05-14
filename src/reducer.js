@@ -8,7 +8,11 @@ const initialState = Map({
   ref: new Firebase('https://redact-fire.firebaseio.com/'),
   user: Map({
     uid: undefined,
-    email: undefined
+    email: undefined,
+    avatar: undefined,
+    info: Map({
+      
+    })
   }),
   loginForm: Map({
     email: Map({
