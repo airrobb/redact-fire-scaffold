@@ -28,13 +28,12 @@ export class Signup extends Component {
 
 function mapStateToProps (state) {
   return {
-    user: state.app.get('user'),
     formState: state.app.get('signUpForm')
   }
 }
 
 Signup.propTypes = {
-  user: PropTypes.object,
+  formState: PropTypes.object.isRequired,
   signUp: PropTypes.func.isRequired,
   validateSignup: PropTypes.func.isRequired
 }

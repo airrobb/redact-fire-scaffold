@@ -9,6 +9,13 @@ export function userLogin (email, password) {
   }
 }
 
+export function validateLogin (field, value) {
+  return {
+    type: 'VALIDATE_LOGIN',
+    field: field,
+    value: value
+  }
+}
 function loginSuccess (userData) {
   return {
     type: 'LOGIN_SUCCESS',
