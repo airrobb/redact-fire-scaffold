@@ -35,7 +35,9 @@ function mapStateToProps (state) {
 
 Login.propTypes = {
   formState: PropTypes.object.isRequired,
-  userLogin: PropTypes.func.isRequired
+  userLogin: PropTypes.func.isRequired,
+  loginError: PropTypes.func.isRequired,
+  validateLogin: PropTypes.func.isRequired
 }
 
 export const LoginContainer = connect(mapStateToProps, actionCreators)(Login)

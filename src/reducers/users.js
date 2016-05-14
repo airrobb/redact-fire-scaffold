@@ -2,34 +2,30 @@ import { Map } from 'immutable'
 
 export function loginSuccess (state, userData) {
   const setUser = state.setIn(['user', 'uid'], userData.uid)
-                       .setIn(['user', 'email'], userData.password.email)
-   const clearForm = setUser.set('loginForm',
+                     .setIn(['user', 'email'], userData.password.email)
+  const clearForm = setUser.set('loginForm',
     Map({
-       email: Map({
-         value: undefined,
-         validation: undefined
-       }),
-       password: Map({
-         value: undefined,
-         validation: undefined
-       }),
-       valid: false,
-       message: Map({
-         type: undefined,
-         active: false,
-         content: Map({
-           headline: undefined,
-           message: undefined
-         })
-       })
-     }))
-   return clearForm
+      email: Map({
+        value: undefined,
+        validation: undefined
+      }),
+      password: Map({
+        value: undefined,
+        validation: undefined
+      }),
+      valid: false,
+      message: Map({
+        type: undefined,
+        active: false,
+        content: Map({
+          headline: undefined,
+          message: undefined
+        })
+      })
+    })
+  )
+  return clearForm
 }
-
-export function loginFailure (state, userData) {
-  return state
-}
-
 
 export function logoutSuccess (state) {
   const clearUser = state.setIn(['user', 'uid'], undefined)
@@ -43,8 +39,8 @@ export function loginFailure (state) {
       type: 'danger',
       active: true,
       content: Map({
-        headline: 'Please fix the errors below',
-        message: 'Email is taken or invalid, please choose another one.'
+        headline: 'Incorrect Information',
+        message: 'Your Email or Password is incorrect'
       })
     })
   )
@@ -65,7 +61,6 @@ export function loginError (state) {
   return setErrorState
 }
 
-
 export function validateLogin (state, field, value) {
   const updatedValue = state.setIn(['loginForm', field, 'value'], value)
   switch (field) {
@@ -73,8 +68,9 @@ export function validateLogin (state, field, value) {
       return validateEmail(updatedValue)
     case 'password':
       return validatePassword(updatedValue)
-    }
-  return state
+    default:
+      return state
+  }
 }
 
 function validateEmail (state) {

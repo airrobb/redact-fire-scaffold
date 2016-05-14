@@ -16,4 +16,5 @@ export class Account extends Component {
 }
 
 Account.propTypes = {
+  userInfo: PropTypes.object.isRequired
 }

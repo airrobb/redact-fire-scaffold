@@ -2,28 +2,28 @@ import { Map } from 'immutable'
 
 export function signUpSuccess (state) {
   const clearForm = state.set('signUpForm', Map({
-      email: Map({
-        value: undefined,
-        validation: undefined
-      }),
-      password1: Map({
-        value: undefined,
-        validation: undefined
-      }),
-      password2: Map({
-        value: undefined,
-        validation: undefined
-      }),
-      valid: false,
-      message: Map({
-        type: 'success',
-        active: true,
-        content: Map({
-          headline: 'Success!',
-          message: 'Your account was successfully created.'
-        })
+    email: Map({
+      value: undefined,
+      validation: undefined
+    }),
+    password1: Map({
+      value: undefined,
+      validation: undefined
+    }),
+    password2: Map({
+      value: undefined,
+      validation: undefined
+    }),
+    valid: false,
+    message: Map({
+      type: 'success',
+      active: true,
+      content: Map({
+        headline: 'Success!',
+        message: 'Your account was successfully created.'
       })
-    }))
+    })
+  }))
   return clearForm
 }
 
