@@ -22,7 +22,7 @@ export class SignupForm extends Component {
   render () {
     const { formState } = this.props
     return (
-      <Form onSubmit={this.handleSubmit.bind(this)} novalidate>
+      <Form onSubmit={this.handleSubmit.bind(this)}>
         <FormGroup controlId="email"
           validationState={this.setValidation(formState.getIn(['email', 'validation']))}>
           <ControlLabel>Email</ControlLabel>
@@ -51,7 +51,7 @@ export class SignupForm extends Component {
           <FormControl.Feedback />
         </FormGroup>
         <FormGroup>
-          <Button type="submit">
+          <Button bsStyle="success" type="submit">
             Sign Up
           </Button>
         </FormGroup>

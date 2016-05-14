@@ -1,6 +1,7 @@
 import { Map } from 'immutable'
 import Firebase from 'firebase'
-import { loginSuccess, loginFailure, signUpSuccess, signUpFailure, signUpError, logoutSuccess, validateSignup } from './reducers/users'
+import { loginSuccess, loginFailure, logoutSuccess } from './reducers/users'
+import { signUpSuccess, signUpFailure, signUpError, validateSignup } from './reducers/signup'
 // Your Firebase Ref Goes here
 
 const initialState = Map({
@@ -36,7 +37,6 @@ const initialState = Map({
 
 export default function (state = initialState, action) {
   switch (action.type) {
-
     case 'LOGIN_SUCCESS':
       return loginSuccess(state, action.user)
     case 'LOGIN_FAILURE':

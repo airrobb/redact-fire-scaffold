@@ -12,7 +12,7 @@ export class Signup extends Component {
     return (
       <Grid>
         <Row>
-          <Col xs={6}>
+          <Col md={6}>
             <h1>Sign Up</h1>
             <SignupForm
               signUp={this.handleSubmit.bind(this)}
