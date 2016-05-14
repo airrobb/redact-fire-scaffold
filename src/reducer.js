@@ -21,7 +21,8 @@ const initialState = Map({
     password2: Map({
       value: undefined,
       validation: undefined
-    })
+    }),
+    valid: false
   })
 })
 
