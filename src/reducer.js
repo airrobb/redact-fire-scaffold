@@ -11,7 +11,28 @@ const initialState = Map({
     email: undefined,
     avatar: undefined,
     info: Map({
-      
+
+    })
+  }),
+  account: Map({
+    detailsForm: Map({
+      name: undefined,
+      location: undefined,
+      description: undefined
+    }),
+    changeEmailForm: Map({
+      email1:  Map({
+        value: undefined,
+        validation: undefined
+      }),
+      email2:  Map({
+        value: undefined,
+        validation: undefined
+      }),
+      password:  Map({
+        value: undefined,
+        validation: undefined
+      })
     })
   }),
   loginForm: Map({
@@ -78,6 +99,12 @@ export default function (state = initialState, action) {
       return signUpSuccess(state)
     case 'LOGOUT_SUCCESS':
       return logoutSuccess(state)
+    case 'UPDATE_ACCOUNT_DETAILS':
+      return state
+    case 'CHANGE_ACCOUNT_EMAIL':
+      return state
+    case 'VALIDATE_CHANGE_EMAIL':
+      return state
   }
   return state
 }

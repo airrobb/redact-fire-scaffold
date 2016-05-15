@@ -17,7 +17,7 @@ import reducer from './reducer'
 import { App } from './components/App'
 import { LoginContainer } from './components/Login'
 import { SignupContainer } from './components/Signup'
-import { Account } from './components/Account'
+import { AccountContainer } from './components/Account'
 
 const DevTools = createDevTools(
   <DockMonitor toggleVisibilityKey='ctrl-h' changePositionKey='ctrl-q'>
@@ -45,7 +45,7 @@ render(<Provider store={store}>
       <Route path='/' component={App}>
         <Route path='/signup' component={SignupContainer} />
         <Route path='/login' component={LoginContainer} />
-        <Route path='/account' component={Account} />
+        <Route path='/account' component={AccountContainer} />
         //TODO Add Your Routes Here
       </Route>
     </Router>
