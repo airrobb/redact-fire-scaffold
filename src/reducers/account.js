@@ -7,7 +7,7 @@ export function updateDetailsError (state) {
 }
 
 export function updateDetailsWaiting (state) {
-  return state
+  return this.state.
 }
 
 export function validateChangeEmail (state, field, value) {
