@@ -3,36 +3,54 @@ import { Form, FormGroup, ControlLabel, FormControl, Button, Alert } from 'react
 
 export class ChangeEmail extends Component {
   handleChange (e) {
-    this.props.validateLogin(e.target.id, e.target.value)
+    this.props.validateEmailChange(e.target.id, e.target.value)
   }
   handleSubmit (e) {
     e.preventDefault()
-
+  }
+  setValidation () {
+    return ''
   }
   render () {
     const { formState } = this.props
     return (
       <Form onSubmit={this.handleSubmit.bind(this)}>
-        <FormGroup controlId='name'>
-          <FormControl type='text'
-            placeholder='Add your name'
-            value={formState.getIn(['name', 'value'])} />
+        <FormGroup controlId='email1'
+          validationState={this.setValidation(formState.getIn(['email1', 'validation']))}>
+          <ControlLabel>New Email</ControlLabel>
+          <FormControl value={formState.getIn(['email1', 'value'])}
+            type='email'
+            placeholder='Enter your email'
+            onChange={this.handleChange.bind(this)} />
+          <FormControl.Feedback />
         </FormGroup>
-        <FormGroup controlId='location'>
-          <FormControl type='text'
-            placeholder='Add your location'
-            value={formState.getIn(['location', 'value'])} />
+        <FormGroup controlId='email2'
+          validationState={this.setValidation(formState.getIn(['email2', 'validation']))}>
+          <ControlLabel>Confirm Email</ControlLabel>
+          <FormControl value={formState.getIn(['email2', 'value'])}
+            type='email'
+            placeholder='Enter your email'
+            onChange={this.handleChange.bind(this)} />
+          <FormControl.Feedback />
         </FormGroup>
-        <FormGroup controlId='description'>
-          <FormControl type='text'
-            placeholder='Add your description'
-            value={formState.getIn(['description', 'value'])} />
+        <FormGroup controlId='password'
+          validationState={this.setValidation(formState.getIn(['password', 'validation']))}>
+          <ControlLabel>Password</ControlLabel>
+          <FormControl value={formState.getIn(['password', 'value'])}
+            type='password'
+            placeholder='Enter your password'
+            onChange={this.handleChange.bind(this)} />
+          <FormControl.Feedback />
         </FormGroup>
         <FormGroup>
           <Button bsStyle='success' type='submit'>
-            Save
+            Change
           </Button>
         </FormGroup>
+        <Alert bsStyle={formState.getIn(['message', 'type'])} style={{display: formState.getIn(['message', 'active']) ? 'block' : 'none'}}>
+          <h4>{formState.getIn(['message', 'content', 'headline'])}</h4>
+          <p>{formState.getIn(['message', 'content', 'message'])}</p>
+        </Alert>
       </Form>
     )
   }

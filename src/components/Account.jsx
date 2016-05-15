@@ -15,8 +15,9 @@ export class Account extends Component {
           </Col>
           <Col xs={6}>
             <h4>Your Details</h4>
-            <AccountDetails formState={this.props.account.get('detailsForm')}/>
+            <AccountDetails formState={this.props.account.get('detailsForm')} />
             <h4>Change Email</h4>
+            <ChangeEmail formState={this.props.account.get('changeEmailForm')} />
           </Col>
         </Row>
       </Grid>

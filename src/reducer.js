@@ -2,7 +2,7 @@ import { Map } from 'immutable'
 import Firebase from 'firebase'
 import { loginSuccess, loginFailure, loginError, logoutSuccess, validateLogin } from './reducers/users'
 import { signUpSuccess, signUpFailure, signUpError, validateSignup } from './reducers/signup'
-// Your Firebase Ref Goes here
+import { updateDetailsSuccess, updateDetailsError, validateChangeEmail, changeEmailSuccess, changeEmailError } from './reducers/account'
 
 const initialState = Map({
   ref: new Firebase('https://redact-fire.firebaseio.com/'),
@@ -11,14 +11,22 @@ const initialState = Map({
     email: undefined,
     avatar: undefined,
     info: Map({
-
     })
   }),
   account: Map({
     detailsForm: Map({
       name: undefined,
       location: undefined,
-      description: undefined
+      description: undefined,
+      waiting: false,
+      message: Map({
+        type: '',
+        active: false,
+        content: Map({
+          headline: undefined,
+          message: undefined
+        })
+      })
     }),
     changeEmailForm: Map({
       email1:  Map({
@@ -32,6 +40,16 @@ const initialState = Map({
       password:  Map({
         value: undefined,
         validation: undefined
+      }),
+      valid: false,
+      waiting: false,
+      message: Map({
+        type: '',
+        active: false,
+        content: Map({
+          headline: undefined,
+          message: undefined
+        })
       })
     })
   }),
@@ -45,6 +63,7 @@ const initialState = Map({
       validation: undefined
     }),
     valid: false,
+    waiting: false,
     message: Map({
       type: '',
       active: false,
@@ -68,6 +87,7 @@ const initialState = Map({
       validation: undefined
     }),
     valid: false,
+    waiting: false,
     message: Map({
       type: '',
       active: false,
@@ -82,7 +102,7 @@ const initialState = Map({
 export default function (state = initialState, action) {
   switch (action.type) {
     case 'VALIDATE_LOGIN':
-    return validateLogin(state, action.field, action.value)
+      return validateLogin(state, action.field, action.value)
     case 'LOGIN_SUCCESS':
       return loginSuccess(state, action.user)
     case 'LOGIN_FAILURE':
@@ -99,12 +119,20 @@ export default function (state = initialState, action) {
       return signUpSuccess(state)
     case 'LOGOUT_SUCCESS':
       return logoutSuccess(state)
-    case 'UPDATE_ACCOUNT_DETAILS':
-      return state
-    case 'CHANGE_ACCOUNT_EMAIL':
-      return state
+    case 'UPDATE_DETAILS_WAITING':
+      return updateDetailsWaiting(state)
+    case 'UPDATE_DETAILS_SUCCESS':
+      return updateDetailsSuccess(state)
+    case 'UPDATE_DETAILS_ERROR':
+      return updateDetailsError(state)
     case 'VALIDATE_CHANGE_EMAIL':
-      return state
+      return validateChangeEmail(state, action.field, action.value)
+    case 'CHANGE_EMAIL_WAITING':
+      return changeEmailWaiting(state)
+    case 'CHANGE_EMAIL_SUCCESS':
+      return changeEmailSuccess(state)
+    case 'CHANGE_EMAIL_ERROR':
+      return changeEmailError(state)
   }
   return state
 }
