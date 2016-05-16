@@ -7,6 +7,7 @@ import * as actionCreators from '../action-creators/account'
 
 export class Account extends Component {
   render () {
+    const { updateDetails, updateDetailsChange, changeEmail, validateChangeEmail, changeEmailError } = this.props
     return (
       <Grid>
         <Row>
@@ -15,9 +16,14 @@ export class Account extends Component {
           </Col>
           <Col xs={6}>
             <h4>Your Details</h4>
-            <AccountDetails formState={this.props.account.get('detailsForm')} />
+            <AccountDetails formState={this.props.account.get('detailsForm')}
+              updateDetails={updateDetails}
+              updateDetailsChange={updateDetailsChange} />
             <h4>Change Email</h4>
-            <ChangeEmail formState={this.props.account.get('changeEmailForm')} />
+            <ChangeEmail formState={this.props.account.get('changeEmailForm')}
+              validateChangeEmail={validateChangeEmail}
+              setError={changeEmailError}
+              changeEmail={changeEmail}/>
           </Col>
         </Row>
       </Grid>

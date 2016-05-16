@@ -3,13 +3,17 @@ import { Form, FormGroup, ControlLabel, FormControl, Button, Alert } from 'react
 
 export class ChangeEmail extends Component {
   handleChange (e) {
-    this.props.validateEmailChange(e.target.id, e.target.value)
+    this.props.validateChangeEmail(e.target.id, e.target.value)
   }
   handleSubmit (e) {
     e.preventDefault()
   }
-  setValidation () {
-    return ''
+  setValidation (state) {
+    if (state === undefined) {
+      return ''
+    } else {
+      return state ? 'success' : 'error'
+    }
   }
   render () {
     const { formState } = this.props
@@ -47,7 +51,8 @@ export class ChangeEmail extends Component {
             Change
           </Button>
         </FormGroup>
-        <Alert bsStyle={formState.getIn(['message', 'type'])} style={{display: formState.getIn(['message', 'active']) ? 'block' : 'none'}}>
+        <Alert bsStyle={formState.getIn(['message', 'type'])}
+          style={{display: formState.getIn(['message', 'active']) ? 'block' : 'none'}}>
           <h4>{formState.getIn(['message', 'content', 'headline'])}</h4>
           <p>{formState.getIn(['message', 'content', 'message'])}</p>
         </Alert>
@@ -58,4 +63,7 @@ export class ChangeEmail extends Component {
 
 ChangeEmail.propTypes = {
   formState: PropTypes.object.isRequired,
+  setError: PropTypes.func.isRequired,
+  changeEmail: PropTypes.func.isRequired,
+  validateChangeEmail: PropTypes.func.isRequired
 }
