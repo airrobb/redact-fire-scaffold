@@ -1,10 +1,17 @@
+import { push } from 'react-router-redux'
+
 export function userLogin (email, password) {
   return function (dispatch, getState) {
     getState().app.get('ref').authWithPassword({
       email: email,
       password: password
     }, (err, userData) => {
-      err ? dispatch(loginFailure()) : dispatch(loginSuccess(userData))
+      if (err) {
+        dispatch(loginFailure())
+      } else {
+        dispatch(loginSuccess(userData))
+        dispatch(push('/'))
+      } 
     })
   }
 }

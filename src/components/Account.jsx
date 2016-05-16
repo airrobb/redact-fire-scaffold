@@ -14,7 +14,7 @@ export class Account extends Component {
           <Col xs={12}>
             <h1>Account</h1>
           </Col>
-          <Col xs={6}>
+          <Col xs={12} md={6}>
             <h4>Your Details</h4>
             <AccountDetails formState={this.props.account.get('detailsForm')}
               updateDetails={updateDetails}

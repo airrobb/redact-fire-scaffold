@@ -6,7 +6,7 @@ import DockMonitor from 'redux-devtools-dock-monitor'
 
 import { compose, createStore, applyMiddleware } from 'redux'
 import { browserHistory } from 'react-router'
-import { syncHistoryWithStore } from 'react-router-redux'
+import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk'
 
 import { reducers } from './reducers/index'
@@ -17,9 +17,11 @@ export const DevTools = createDevTools(
   </DockMonitor>
 )
 
+const browserMiddleware = routerMiddleware(browserHistory)
+
 export const store = createStore(
   reducers,
-  compose(applyMiddleware(thunk), DevTools.instrument())
+  compose(applyMiddleware(thunk, browserMiddleware), DevTools.instrument())
 )
 
 if (module.hot) {

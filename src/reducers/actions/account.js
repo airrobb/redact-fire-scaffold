@@ -10,7 +10,6 @@ export function updateDetailsWaiting (state) {
   return state
 }
 
-
 export function validateChangeEmail (state, field, value) {
   const updatedValue = state.setIn(['account', 'changeEmailForm', field, 'value'], value)
   switch (field) {
