@@ -1,41 +1,16 @@
-import { createDevTools } from 'redux-devtools'
-import LogMonitor from 'redux-devtools-log-monitor'
-import DockMonitor from 'redux-devtools-dock-monitor'
-
 import './styles/main.scss'
 
 import React from 'react'
 import { render } from 'react-dom'
-import { compose, createStore, applyMiddleware, combineReducers } from 'redux'
-import { Router, Route, browserHistory } from 'react-router'
-import { routerReducer, syncHistoryWithStore } from 'react-router-redux'
+import { Router, Route } from 'react-router'
 import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
-
-import reducer from './reducer'
 
 import { App } from './components/App'
 import { LoginContainer } from './components/Login'
 import { SignupContainer } from './components/Signup'
 import { AccountContainer } from './components/Account'
 
-const DevTools = createDevTools(
-  <DockMonitor toggleVisibilityKey='ctrl-h' changePositionKey='ctrl-q'>
-    <LogMonitor theme='tomorrow' preserveScrollTop={false} />
-  </DockMonitor>
-)
-
-const reducers = combineReducers({
-  app: reducer,
-  routing: routerReducer
-})
-
-const store = createStore(
-  reducers,
-  compose(applyMiddleware(thunk), DevTools.instrument())
-)
-
-const history = syncHistoryWithStore(browserHistory, store)
+import { store, history, DevTools } from './store'
 
 const app = document.getElementById('app')
 

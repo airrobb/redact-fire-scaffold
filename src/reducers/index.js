@@ -1,8 +1,10 @@
 import { Map } from 'immutable'
 import Firebase from 'firebase'
-import { loginSuccess, loginFailure, loginError, logoutSuccess, validateLogin } from './reducers/users'
-import { signUpSuccess, signUpFailure, signUpError, validateSignup } from './reducers/signup'
-import { updateDetailsSuccess, updateDetailsError, validateChangeEmail, changeEmailSuccess, changeEmailError } from './reducers/account'
+import { routerReducer } from 'react-router-redux'
+import { combineReducers } from 'redux'
+import { loginSuccess, loginFailure, loginError, logoutSuccess, validateLogin } from './users'
+import { signUpSuccess, signUpFailure, signUpError, validateSignup } from './signup'
+import { updateDetailsSuccess, updateDetailsError, validateChangeEmail, changeEmailSuccess, changeEmailError } from './account'
 
 const initialState = Map({
   ref: new Firebase('https://redact-fire.firebaseio.com/'),
@@ -99,7 +101,7 @@ const initialState = Map({
   })
 })
 
-export default function (state = initialState, action) {
+function reducer (state = initialState, action) {
   switch (action.type) {
     case 'VALIDATE_LOGIN':
       return validateLogin(state, action.field, action.value)
@@ -136,3 +138,9 @@ export default function (state = initialState, action) {
   }
   return state
 }
+
+
+export const reducers = combineReducers({
+  app: reducer,
+  routing: routerReducer
+})
