@@ -2,9 +2,9 @@ import { Map } from 'immutable'
 import Firebase from 'firebase'
 import { routerReducer } from 'react-router-redux'
 import { combineReducers } from 'redux'
-import { loginSuccess, loginFailure, loginError, logoutSuccess, validateLogin } from './users'
-import { signUpSuccess, signUpFailure, signUpError, validateSignup } from './signup'
-import { updateDetailsSuccess, updateDetailsError, validateChangeEmail, changeEmailSuccess, changeEmailError } from './account'
+import { loginSuccess, loginFailure, loginError, logoutSuccess, validateLogin } from './actions/users'
+import { signUpSuccess, signUpFailure, signUpError, validateSignup } from './actions/signup'
+import { updateDetailsSuccess, updateDetailsError, validateChangeEmail, changeEmailSuccess, changeEmailError } from './actions/account'
 
 const initialState = Map({
   ref: new Firebase('https://redact-fire.firebaseio.com/'),
