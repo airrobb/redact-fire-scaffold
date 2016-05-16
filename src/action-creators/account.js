@@ -31,9 +31,9 @@ function updateDetailsError () {
   }
 }
 
-export function changeEmail () {
+export function changeEmail (email, password) {
   return function (dispatch, getState) {
-
+    console.log(email, password)
   }
 }
 

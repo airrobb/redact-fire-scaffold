@@ -7,6 +7,11 @@ export class ChangeEmail extends Component {
   }
   handleSubmit (e) {
     e.preventDefault()
+    const { formState, changeEmail, setError } = this.props
+    console.log(formState)
+    formState.get('valid')
+    ? changeEmail(formState.getIn(['email1', 'value']), formState.getIn(['password', 'value']))
+    : setError()
   }
   setValidation (state) {
     if (state === undefined) {

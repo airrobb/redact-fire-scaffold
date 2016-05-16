@@ -52,9 +52,12 @@ function validatePassword (state) {
 }
 
 function allFieldsValid (state) {
-  const firstEmailValid = state.getIn(['account', 'changeEmailForm', 'email', 'validation'])
+  const firstEmailValid = state.getIn(['account', 'changeEmailForm', 'email1', 'validation'])
   const secondEmailValid = state.getIn(['account', 'changeEmailForm', 'email2', 'validation'])
   const passwordValid = state.getIn(['account', 'changeEmailForm', 'password', 'validation'])
+  console.log(secondEmailValid)
+  console.log(firstEmailValid)
+  console.log(passwordValid)
   return firstEmailValid && secondEmailValid && passwordValid
 }
 
