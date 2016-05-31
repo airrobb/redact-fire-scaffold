@@ -5,9 +5,10 @@ import { combineReducers } from 'redux'
 import { loginSuccess, loginFailure, loginError, logoutSuccess, validateLogin } from './actions/users'
 import { signUpSuccess, signUpFailure, signUpError, validateSignup } from './actions/signup'
 import { updateDetailsSuccess, updateDetailsError, validateChangeEmail, changeEmailSuccess, changeEmailError } from './actions/account'
+import { FirebaseRef } from '../config/ref-config.js'
 
 const initialState = Map({
-  ref: new Firebase('https://redact-fire.firebaseio.com/'),
+  ref: new Firebase(FirebaseRef),
   user: Map({
     uid: undefined,
     email: undefined,
